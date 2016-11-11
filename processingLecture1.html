@@ -1,0 +1,131 @@
+<html>
+	<head>
+		<title>FishTank 2.0</title>
+		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
+		<script type="text/processing" data-processing-target="mycanvas">
+        // Declare and contruct two objects (h1, h2) from the class HorizontalLine
+
+        // Declare and contruct two objects (h1, h2) from the class HorizontalLine
+
+        HorizontalLine slowLine = new HorizontalLine(20, 2.0);
+
+        HorizontalLine fastLine = new HorizontalLine(50, 2.5);
+
+        Fish randomFish = new Fish(200, 100);
+
+        int WINDOW_WIDTH = 600;
+        int WINDOW_HEIGHT = 600;
+
+        int REFRESH_RATE_PER_SECOND = 30;
+        int GREY = 204;
+        //runs once at the start of the program
+        void setup()
+        {
+
+          size(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+          frameRate(REFRESH_RATE_PER_SECOND);//how often per second the draw function is called
+
+        }
+
+
+        //called repeatedly
+        void draw() {
+
+          background(GREY);
+
+          slowLine.updateAndRedraw();
+
+          fastLine.updateAndRedraw();
+
+          randomFish.drawFish();
+
+        }
+
+
+
+        class HorizontalLine {
+
+          //attributes
+          float ypos, speed;
+
+          //constructor
+          HorizontalLine (float y, float s) {
+
+            ypos = y;
+
+            speed = s;
+
+          }
+
+          void updateAndRedraw() {
+          	update();
+          	drawLine();
+          }
+
+          void update()
+          {
+
+            ypos += speed;
+
+            if (ypos > height)
+            {
+
+              ypos = 0;
+
+            }
+
+
+          }
+
+          void drawLine()
+          {
+          	 line(0, ypos, width, ypos);
+		  }
+
+        }
+
+        class Fish
+        {
+        	//attributes
+        	var centerX, centerY, bodyHeight, bodyLength, tailHeight, tailWidth, bodyColor;
+
+        	//constructor
+        	Fish(var bh, var bl)
+        	{
+        		//attributes on the left, parameters on the right
+        		bodyHeight = 74;
+        		bodyLength = 118;
+        		tailHeight = bodyLength/4;
+        		tailWidth = bodyHeight/4;
+        		bodyColor = color(random(30,255),random(30,255), random(30,120));
+        		centerX = random(0, 360);
+        		centerY = random(0, 360);
+
+        	}
+
+        	void drawFish()
+        	{
+        		fill(bodyColor);
+        		// body
+        		ellipse(centerX, centerY, bodyLength, bodyHeight);
+        		// tail
+        		var tailWidth = bodyLength/4;
+        		var tailHeight = bodyHeight/2;
+        		triangle(centerX-bodyLength/2, centerY,
+        		         centerX-bodyLength/2-tailWidth, centerY-tailHeight,
+        		         centerX-bodyLength/2-tailWidth, centerY+tailHeight);
+        		// eye
+        		fill(33, 33, 33);
+        		ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
+
+        	}
+
+        }
+        </script>
+    </head>
+
+    <body>
+		<canvas id="mycanvas"></canvas>
+	</body>
+</html>
