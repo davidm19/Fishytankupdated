@@ -40,6 +40,8 @@
 
           randomFish.drawFish();
 
+					randomFish.swim();
+
         }
 
 
@@ -118,8 +120,24 @@
         		// eye
         		fill(33, 33, 33);
         		ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
+						centerX += 5
+
 
         	}
+			void swim() {
+				move();
+				}
+			void move() {
+					centerX += 3;
+					if (centerX > width)
+					{
+						centerX = 0
+					}
+
+
+
+			}
+
 
         }
         </script>
