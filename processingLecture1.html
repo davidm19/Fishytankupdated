@@ -11,6 +11,8 @@
 
         HorizontalLine fastLine = new HorizontalLine(50, 2.5);
 
+				Jellyfish randomJellyfish = new Jellyfish(100, 100);
+
         Fish randomFish = new Fish(200, 100);
 
         int WINDOW_WIDTH = 600;
@@ -34,17 +36,47 @@
 
           background(GREY);
 
-          slowLine.updateAndRedraw();
-
-          fastLine.updateAndRedraw();
-
           randomFish.drawFish();
 
 					randomFish.swim();
 
+					randomJellyfish.drawJelly();
+
         }
 
 
+				class Jellyfish
+				{
+					var centerX, centerY, bodyLength2, bodyHeight2, bodyLength3, bodyHeight3, girth;
+
+					Jellyfish(var bh, var bl)
+					{
+						bodyHeight2 = 100;
+        		bodyLength2 = 100;
+						bodyHeight2 = 50;
+        		bodyLength2 = 50;
+        		girth = 80;
+        		centerX = random(0, 360);
+        		centerY = random(0, 360);
+						centerColors = color(random(0, 255), random(0, 255), random(200, 255));
+						centerColors2 = color(random(0, 255), random(0, 255), random(200, 255));
+					}
+
+					void drawJelly()
+					{
+						fill(255, 255, 255);
+    				ellipse(centerX, centerY, girth, girth);
+    				fill(centerColors);
+						ellipse(centerX, centerY, girth - 15, girth - 15);
+						fill(centerColors2);
+						ellipse(centerX, centerY, girth - 30, girth - 30);
+						fill(255, 255, 255);
+						noStroke();
+						ellipse(centerX - 25, centerY + 66, girth/6, girth);
+						ellipse(centerX, centerY + 73, girth/6, girth);
+						ellipse(centerX + 25, centerY + 62, girth/6, girth);
+					}
+				}
 
         class HorizontalLine {
 
