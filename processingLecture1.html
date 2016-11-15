@@ -15,6 +15,8 @@
 
         Fish randomFish = new Fish(200, 100);
 
+				Crab randomCrab = new Crab(100, 100);
+
         int WINDOW_WIDTH = 600;
         int WINDOW_HEIGHT = 600;
 
@@ -42,12 +44,45 @@
 
 					randomJellyfish.drawJelly();
 
+					randomCrab.drawCrab();
+
         }
 
+				class Crab
+				{
+					var centerX3, centerY3, bodyLength4, bodyHeight4, bodyLength5, bodyHeight5, krabbyColor;
+
+					Crab(var bh, var bl)
+					{
+						centerX3 = random(0,400);
+				    centerY3 = random(0,400);
+				    bodyLength4 = 100;
+				    bodyHeight4 = 58;
+				    bodyLength5 = 50;
+				    bodyHeight5 = 50;
+				    krabbyColor = color(255, 89, 0);
+					}
+					void drawCrab()
+					{
+						fill(krabbyColor);
+						ellipse(centerX3, centerY3, bodyLength4, bodyHeight4);
+						triangle(centerX3 + 75, centerY3 - 24, centerX3 + 53, centerY3 - 49, centerX3 + 21, centerY3 + 5);
+						triangle(centerX3 - 49, centerY3 - 52, centerX3 - 73, centerY3 + -31, centerX3 - 24, centerY3 + 3);
+						ellipse(centerX3 + 68, centerY3 - 39, 25, 25);
+						ellipse(centerX3 - 64, centerY3 - 43, 25, 25);
+						rect(centerX3 - 19, centerY3 - 45, 9, 38); //eyestalk 1
+						rect(centerX3 + 8, centerY3 - 45, 9, 38); //eyestalk 2
+						rect(centerX3 - 31, centerY3 - 7, 9, 38);
+						rect(centerX3 + 25, centerY3 - 7, 9, 38);
+						fill(0, 0, 0);
+						ellipse(centerX3 - 15, centerY3 - 45, 15, 15);
+						ellipse(centerX3 + 13, centerY3 - 45, 15, 15);
+					}
+				}
 
 				class Jellyfish
 				{
-					var centerX, centerY, bodyLength2, bodyHeight2, bodyLength3, bodyHeight3, girth;
+					var centerX2, centerY2, bodyLength2, bodyHeight2, bodyLength3, bodyHeight3, girth;
 
 					Jellyfish(var bh, var bl)
 					{
@@ -56,8 +91,8 @@
 						bodyHeight2 = 50;
         		bodyLength2 = 50;
         		girth = 80;
-        		centerX = random(0, 360);
-        		centerY = random(0, 360);
+        		centerX2 = random(0, 360);
+        		centerY2 = random(0, 360);
 						centerColors = color(random(0, 255), random(0, 255), random(200, 255));
 						centerColors2 = color(random(0, 255), random(0, 255), random(200, 255));
 					}
@@ -65,16 +100,16 @@
 					void drawJelly()
 					{
 						fill(255, 255, 255);
-    				ellipse(centerX, centerY, girth, girth);
+    				ellipse(centerX2, centerY2, girth, girth);
     				fill(centerColors);
-						ellipse(centerX, centerY, girth - 15, girth - 15);
+						ellipse(centerX2, centerY2, girth - 15, girth - 15);
 						fill(centerColors2);
-						ellipse(centerX, centerY, girth - 30, girth - 30);
+						ellipse(centerX2, centerY2, girth - 30, girth - 30);
 						fill(255, 255, 255);
 						noStroke();
-						ellipse(centerX - 25, centerY + 66, girth/6, girth);
-						ellipse(centerX, centerY + 73, girth/6, girth);
-						ellipse(centerX + 25, centerY + 62, girth/6, girth);
+						ellipse(centerX2 - 25, centerY2 + 66, girth/6, girth);
+						ellipse(centerX2, centerY2 + 73, girth/6, girth);
+						ellipse(centerX2 + 25, centerY2 + 62, girth/6, girth);
 					}
 				}
 
