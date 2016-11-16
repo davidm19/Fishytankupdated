@@ -44,6 +44,8 @@
 
 					randomJellyfish.drawJelly();
 
+					randomJellyfish.swimJ();
+
 					randomCrab.drawCrab();
 
         }
@@ -78,6 +80,10 @@
 						ellipse(centerX3 - 15, centerY3 - 45, 15, 15);
 						ellipse(centerX3 + 13, centerY3 - 45, 15, 15);
 					}
+					void moveCrab()
+					{
+
+					}
 				}
 
 				class Jellyfish
@@ -110,6 +116,16 @@
 						ellipse(centerX2 - 25, centerY2 + 66, girth/6, girth);
 						ellipse(centerX2, centerY2 + 73, girth/6, girth);
 						ellipse(centerX2 + 25, centerY2 + 62, girth/6, girth);
+					}
+
+					void swimJ() {
+						move2();
+						}
+					void move2() {
+						centerX2 += 3;
+						if (centerX2 > width) {
+							centerX2 = 0
+						}
 					}
 				}
 
@@ -187,8 +203,6 @@
         		// eye
         		fill(33, 33, 33);
         		ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
-						centerX += 5
-
 
         	}
 			void swim() {
