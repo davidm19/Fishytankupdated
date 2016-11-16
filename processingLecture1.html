@@ -48,6 +48,8 @@
 
 					randomCrab.drawCrab();
 
+					randomCrab.crabSwim();
+
         }
 
 				class Crab
@@ -80,9 +82,17 @@
 						ellipse(centerX3 - 15, centerY3 - 45, 15, 15);
 						ellipse(centerX3 + 13, centerY3 - 45, 15, 15);
 					}
+					void crabSwim()
+					{
+						moveCrab();
+					}
 					void moveCrab()
 					{
-
+						centerX3 += 3;
+						if (centerX3 > width)
+						{
+							centerX3 = 0;
+						}
 					}
 				}
 
