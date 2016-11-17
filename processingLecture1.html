@@ -7,21 +7,19 @@
 
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine
 
-        HorizontalLine slowLine = new HorizontalLine(20, 2.0);
-
-        HorizontalLine fastLine = new HorizontalLine(50, 2.5);
-
 				Jellyfish randomJellyfish = new Jellyfish(100, 100);
 
         Fish randomFish = new Fish(200, 100);
 
 				Crab randomCrab = new Crab(100, 100);
 
+				Ground ground = new Ground(-45, 620);
+
         int WINDOW_WIDTH = 600;
         int WINDOW_HEIGHT = 600;
 
         int REFRESH_RATE_PER_SECOND = 30;
-        int GREY = 204;
+        var BLUE = color(66, 134, 244);
         //runs once at the start of the program
         void setup()
         {
@@ -36,7 +34,7 @@
         //called repeatedly
         void draw() {
 
-          background(GREY);
+          background(BLUE);
 
           randomFish.drawFish();
 
@@ -50,7 +48,29 @@
 
 					randomCrab.crabSwim();
 
+					ground.drawGround();
+
         }
+
+				class Ground
+				{
+					var groundWidth, groundHeight, groundPosX, groundPosY, groundColor;
+
+					Ground(var bh, var bl)
+					{
+						groundWidth = 600;
+						groundHeight = 35;
+						groundPosX = 0;
+						groundPosY = 565;
+						groundColor = color(206, 140, 53);
+					}
+					void drawGround()
+					{
+						noStroke();
+						fill(groundColor);
+						rect(groundPosX, groundPosY, groundWidth, groundHeight);
+					}
+				}
 
 				class Crab
 				{
@@ -138,47 +158,6 @@
 						}
 					}
 				}
-
-        class HorizontalLine {
-
-          //attributes
-          float ypos, speed;
-
-          //constructor
-          HorizontalLine (float y, float s) {
-
-            ypos = y;
-
-            speed = s;
-
-          }
-
-          void updateAndRedraw() {
-          	update();
-          	drawLine();
-          }
-
-          void update()
-          {
-
-            ypos += speed;
-
-            if (ypos > height)
-            {
-
-              ypos = 0;
-
-            }
-
-
-          }
-
-          void drawLine()
-          {
-          	 line(0, ypos, width, ypos);
-		  }
-
-        }
 
         class Fish
         {
