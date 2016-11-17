@@ -28,6 +28,8 @@
 
 				ArrayList<Fish> fishList;
 
+				ArrayList<JellyFishh> jellyfishList;
+
 				void setup()
         {
 					fishList = new ArrayList<Fish>();
@@ -37,6 +39,15 @@
 					for(var i = 0; i < numberOfFish; i++)
 					{
 							fishList.add(new Fish(100,100));
+					}
+
+					jellyfishList = new ArrayList<JellyFishh>();
+
+					var numberOfJellies = random(1,5);
+
+					for(var i = 0; i < numberOfJellies; i++)
+					{
+							jellyfishList.add(new Jellyfish(100, 200))
 					}
 
           size(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -73,6 +84,13 @@
 						Fish currentFish = fishList.get(i);
 						currentFish.drawFish();
 						currentFish.swim();
+					}
+
+					for(var i = 0; i < jellyfishList.size(); i++)
+					{
+						JellyFishh currentJelly = jellyfishList.get(i);
+						currentJelly.drawJelly();
+						currentJelly.swimJ();
 					}
 
         }
