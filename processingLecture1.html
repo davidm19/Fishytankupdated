@@ -25,13 +25,23 @@
         int REFRESH_RATE_PER_SECOND = 30;
         var BLUE = color(89, 216, 255);
         //runs once at the start of the program
-        void setup()
+
+				ArrayList<Fish> fishList;
+
+				void setup()
         {
+					fishList = new ArrayList<Fish>();
+
+					var numberOfFish = random(1,5);
+
+					for(var i = 0; i < numberOfFish; i++)
+					{
+							fishList.add(new Fish(100,100));
+					}
 
           size(WINDOW_WIDTH, WINDOW_HEIGHT);
 
           frameRate(REFRESH_RATE_PER_SECOND);//how often per second the draw function is called
-
         }
 
 
@@ -57,6 +67,12 @@
 					randomCrab.drawCrab();
 
 					randomCrab.crabSwim();
+
+					for(var i = 0; i < fishList.size(); i++)
+					{
+						Fish currentFish = fishList.get(i);
+						currentFish.drawFish();
+					}
 
         }
 
@@ -139,7 +155,7 @@
 					Crab(var bh, var bl)
 					{
 						centerX3 = 0;
-				    centerY3 = random(540,565);
+				    centerY3 = random(540,575);
 				    bodyLength4 = 100;
 				    bodyHeight4 = 58;
 				    bodyLength5 = 50;
@@ -238,8 +254,8 @@
         	}
 
         	void drawFish()
-        	{
-        		fill(bodyColor);
+					{
+						fill(bodyColor);
         		// body
         		ellipse(centerX, centerY, bodyLength, bodyHeight);
         		// tail
