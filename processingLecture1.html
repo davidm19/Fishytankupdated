@@ -15,11 +15,13 @@
 
 				Ground ground = new Ground(-45, 620);
 
+				Kelp kelp = new Kelp(-45, 620);
+
         int WINDOW_WIDTH = 600;
         int WINDOW_HEIGHT = 600;
 
         int REFRESH_RATE_PER_SECOND = 30;
-        var BLUE = color(66, 134, 244);
+        var BLUE = color(89, 216, 255);
         //runs once at the start of the program
         void setup()
         {
@@ -36,6 +38,10 @@
 
           background(BLUE);
 
+					ground.drawGround();
+
+					kelp.drawKelp();
+
           randomFish.drawFish();
 
 					randomFish.swim();
@@ -47,8 +53,6 @@
 					randomCrab.drawCrab();
 
 					randomCrab.crabSwim();
-
-					ground.drawGround();
 
         }
 
@@ -72,14 +76,46 @@
 					}
 				}
 
+				class Kelp
+				{
+					var kelpWidth, kelpHeight, kelpPosY, kelpColor;
+
+					Kelp(var bh, var bl)
+					{
+						kelpWidth = 26;
+						kelpHeight = 136;
+						kelpPosY = 520;
+						kelpColor = color(57, 168, 45);
+					}
+
+					void drawKelp()
+					{
+						noStroke();
+						fill(kelpColor);
+						ellipse(0, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(46, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(96, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(146, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(196, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(246, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(296, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(346, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(396, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(446, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(496, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(546, kelpPosY, kelpWidth, kelpHeight);
+						ellipse(596, kelpPosY, kelpWidth, kelpHeight);
+					}
+				}
+
 				class Crab
 				{
 					var centerX3, centerY3, bodyLength4, bodyHeight4, bodyLength5, bodyHeight5, krabbyColor;
 
 					Crab(var bh, var bl)
 					{
-						centerX3 = random(0,400);
-				    centerY3 = random(0,400);
+						centerX3 = 0;
+				    centerY3 = 540;
 				    bodyLength4 = 100;
 				    bodyHeight4 = 58;
 				    bodyLength5 = 50;
@@ -111,7 +147,7 @@
 						centerX3 += 3;
 						if (centerX3 > width)
 						{
-							centerX3 = 0;
+							centerX3 = -40;
 						}
 					}
 				}
@@ -154,7 +190,7 @@
 					void move2() {
 						centerX2 += 3;
 						if (centerX2 > width) {
-							centerX2 = 0
+							centerX2 = -95;
 						}
 					}
 				}
@@ -201,7 +237,7 @@
 					centerX += 3;
 					if (centerX > width)
 					{
-						centerX = 0
+						centerX = -40;
 					}
 
 
