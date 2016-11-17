@@ -139,7 +139,7 @@
 					Crab(var bh, var bl)
 					{
 						centerX3 = 0;
-				    centerY3 = 550;
+				    centerY3 = random(540,565);
 				    bodyLength4 = 100;
 				    bodyHeight4 = 58;
 				    bodyLength5 = 50;
@@ -169,7 +169,7 @@
 					void moveCrab()
 					{
 						centerX3 += 3;
-						if (centerX3 > width)
+						if (centerX3 - 75 > width)
 						{
 							centerX3 = -40;
 						}
@@ -213,16 +213,15 @@
 						}
 					void move2() {
 						centerX2 += 3;
-						if (centerX2 > width) {
+						if (centerX2 - 75 > width) {
 							centerX2 = -95;
 						}
 					}
 				}
 
         class Fish
-        {
-        	//attributes
-        	var centerX, centerY, bodyHeight, bodyLength, tailHeight, tailWidth, bodyColor;
+				{
+					var centerX, centerY, bodyHeight, bodyLength, tailHeight, tailWidth, bodyColor;
 
         	//constructor
         	Fish(var bh, var bl)
@@ -252,24 +251,22 @@
         		// eye
         		fill(33, 33, 33);
         		ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
-
-        	}
-			void swim() {
-				move();
-				}
-			void move() {
-					centerX += 3;
-					if (centerX > width)
-					{
-						centerX = -40;
 					}
 
+					void swim() {
+						move();
+					}
+					void move()
+					{
+						centerX += 3;
+						if (centerX - 100 > width)
+						{
+							centerX = -40;
+							// centerY = random(50, 500); should we add this?
+						}
+					}
+				}
 
-
-			}
-
-
-        }
         </script>
     </head>
 
