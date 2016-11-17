@@ -30,6 +30,8 @@
 
 				ArrayList<JellyFishh> jellyfishList;
 
+				ArrayList<Crab> crabList;
+
 				void setup()
         {
 					fishList = new ArrayList<Fish>();
@@ -48,6 +50,15 @@
 					for(var i = 0; i < numberOfJellies; i++)
 					{
 							jellyfishList.add(new Jellyfish(100, 200))
+					}
+
+					crabList = new ArrayList<Crab>();
+
+					var numberOfCrabs = random(1,2);
+
+					for(var i = 0; i < numberOfCrabs; i++)
+					{
+						crabList.add(new Crab(200, 100))
 					}
 
           size(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -91,6 +102,13 @@
 						JellyFishh currentJelly = jellyfishList.get(i);
 						currentJelly.drawJelly();
 						currentJelly.swimJ();
+					}
+
+					for(var i = 0; i < crabList.size(); i++)
+					{
+						Crab currentCrab = crabList.get(i);
+						currentCrab.drawCrab();
+						currentCrab.crabSwim();
 					}
 
         }
@@ -173,7 +191,7 @@
 
 					Crab(var bh, var bl)
 					{
-						centerX3 = 0;
+						centerX3 = random(0,600);
 				    centerY3 = random(540,575);
 				    bodyLength4 = 100;
 				    bodyHeight4 = 58;
@@ -224,19 +242,20 @@
         		girth = 80;
         		centerX2 = random(0, 360);
         		centerY2 = random(0, 360);
+						fillJelly = color(random(220,255), random(220,255), random(220,255));
 						centerColors = color(random(0, 255), random(0, 255), random(200, 255));
 						centerColors2 = color(random(0, 255), random(0, 255), random(200, 255));
 					}
 
 					void drawJelly()
 					{
-						fill(255, 255, 255);
+						fill(fillJelly);
     				ellipse(centerX2, centerY2, girth, girth);
     				fill(centerColors);
 						ellipse(centerX2, centerY2, girth - 15, girth - 15);
 						fill(centerColors2);
 						ellipse(centerX2, centerY2, girth - 30, girth - 30);
-						fill(255, 255, 255);
+						fill(fillJelly);
 						noStroke();
 						ellipse(centerX2 - 25, centerY2 + 66, girth/6, girth);
 						ellipse(centerX2, centerY2 + 73, girth/6, girth);
