@@ -23,7 +23,6 @@
         int WINDOW_HEIGHT = 600;
 
         int REFRESH_RATE_PER_SECOND = 30;
-        var BLUE = color(89, 216, 255);
         //runs once at the start of the program
 
 				ArrayList<Fish> fishList;
@@ -32,8 +31,14 @@
 
 				ArrayList<Crab> crabList;
 
+				PImage b;
+
 				void setup()
         {
+					b = loadImage("fishTankBackground.jpg");
+
+					var back = background(66, 134, 244);
+
 					fishList = new ArrayList<Fish>();
 
 					var numberOfFish = random(1,5);
@@ -54,7 +59,7 @@
 
 					crabList = new ArrayList<Crab>();
 
-					var numberOfCrabs = random(1,2);
+					var numberOfCrabs = random(1,3);
 
 					for(var i = 0; i < numberOfCrabs; i++)
 					{
@@ -70,7 +75,7 @@
         //called repeatedly
         void draw() {
 
-          background(BLUE);
+					image(b, 0, 0);
 
 					newground.drawGround();
 
@@ -221,7 +226,7 @@
 					}
 					void moveCrab()
 					{
-						centerX3 += 3;
+						centerX3 += 2;
 						if (centerX3 - 75 > width)
 						{
 							centerX3 = -40;
